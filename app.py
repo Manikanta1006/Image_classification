@@ -81,5 +81,3 @@ else:
 
         scores = {class_name: float(probabilities[index]) for index, class_name in enumerate(classes)}
         st.bar_chart(scores)
-
-
