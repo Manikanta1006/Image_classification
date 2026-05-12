@@ -1,6 +1,6 @@
 # Image Classification AI/ML Project
 
-This project trains a simple PyTorch image classifier and serves it with a Streamlit web app for Lightning AI.
+This project trains a simple PyTorch image classifier and serves it with a Flask web app for Lightning AI.
 
 ## Run on Lightning AI
 
@@ -10,10 +10,10 @@ In the Lightning AI terminal:
 cd /teamspace/studios/this_studio/Image_classification2
 pip install -r requirements.txt
 python src/train.py
-streamlit run app.py
+python app.py
 ```
 
-The project includes `.streamlit/config.toml`, so Streamlit starts on port `8501` automatically.
+The app starts on port `8501`.
 
 Open this Lightning Web UI URL:
 
@@ -24,7 +24,7 @@ https://lightning.ai/veeramanikanta386/deploy-model-project/studios/favourable-v
 If port `8501` is busy, run:
 
 ```bash
-streamlit run app.py --server.port 8502
+python -c "from app import app; app.run(host='0.0.0.0', port=8502)"
 ```
 
 Then open the same URL with `port=8502`.
@@ -48,10 +48,9 @@ data/val/dogs/
 ## Files
 
 ```text
-app.py                  Streamlit prediction app
+app.py                  Flask prediction app
 src/train.py            Training script
 src/model.py            CNN model
 src/dataset.py          Data loaders
 requirements.txt        Python dependencies
-.streamlit/config.toml  Lightning/Streamlit server config
 ```

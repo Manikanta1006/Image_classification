@@ -2,4 +2,4 @@ torch
 torchvision
 matplotlib
 pillow
-streamlit
+flask
