@@ -1,83 +1,57 @@
 # Image Classification AI/ML Project
 
-This project trains a simple PyTorch image classifier and serves it with a Streamlit web app for deployment on Lightning AI.
+This project trains a simple PyTorch image classifier and serves it with a Streamlit web app for Lightning AI.
 
-## Folder Structure
+## Run on Lightning AI
 
-```text
-Image_classification/
-|-- app.py                  # Streamlit prediction app
-|-- data/
-|   |-- train/              # Training images, one folder per class
-|   `-- val/                # Optional validation images
-|-- models/                 # Trained model weights and class names
-|-- src/
-|   |-- dataset.py
-|   |-- model.py
-|   `-- train.py
-|-- requirements.txt
-`-- README.md
-```
-
-## 1. Install Dependencies
+In the Lightning AI terminal:
 
 ```bash
+cd /teamspace/studios/this_studio/Image_classification2
 pip install -r requirements.txt
+python src/train.py
+streamlit run app.py
 ```
 
-## 2. Prepare Data
+The project includes `.streamlit/config.toml`, so Streamlit starts on port `8501` automatically.
 
-Organize images into class folders:
+Open this Lightning Web UI URL:
+
+```text
+https://lightning.ai/veeramanikanta386/deploy-model-project/studios/favourable-violet-myp7/web-ui?port=8501
+```
+
+If port `8501` is busy, run:
+
+```bash
+streamlit run app.py --server.port 8502
+```
+
+Then open the same URL with `port=8502`.
+
+## Data Layout
+
+Put images in class folders:
 
 ```text
 data/train/cats/
 data/train/dogs/
 ```
 
-Optional validation data should use the same class folder names:
+Optional validation data:
 
 ```text
 data/val/cats/
 data/val/dogs/
 ```
 
-## 3. Train the Model
-
-```bash
-python src/train.py
-```
-
-The training script saves:
+## Files
 
 ```text
-models/simple_cnn.pth
-models/classes.json
+app.py                  Streamlit prediction app
+src/train.py            Training script
+src/model.py            CNN model
+src/dataset.py          Data loaders
+requirements.txt        Python dependencies
+.streamlit/config.toml  Lightning/Streamlit server config
 ```
-
-You can also change training settings:
-
-```bash
-python src/train.py --epochs 20 --batch-size 16 --learning-rate 0.0005
-```
-
-## 4. Run the Web App
-
-```bash
-streamlit run app.py --server.address 0.0.0.0 --server.port 8080
-```
-
-Upload an image in the app to get the predicted class and confidence.
-
-## Lightning AI Deployment
-
-1. Create or open a Lightning AI Studio.
-2. Upload this folder or clone it from GitHub.
-3. In the Studio terminal, run:
-
-```bash
-pip install -r requirements.txt
-python src/train.py
-streamlit run app.py --server.address 0.0.0.0 --server.port 8080
-```
-
-4. Open the public or preview URL for port `8080`.

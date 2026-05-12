@@ -66,7 +66,7 @@ st.title("Image Classifier")
 model, classes = load_model()
 
 if model is None:
-    st.warning("Train the model first so `models/simple_cnn.pth` and class names are available.")
+    st.warning("Train the model first so models/simple_cnn.pth and class names are available.")
     st.code("python src/train.py", language="bash")
 else:
     uploaded_file = st.file_uploader("Upload an image", type=["jpg", "jpeg", "png", "webp"])
